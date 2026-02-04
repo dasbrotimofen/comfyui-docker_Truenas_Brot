@@ -32,6 +32,12 @@ rm --force /opt/comfyui/custom_nodes/ComfyUI-Manager
 ln -s \
     /opt/comfyui-manager \
     /opt/comfyui/custom_nodes/ComfyUI-Manager
+# Fix ComfyUI-Manager package layout
+INIT_FILE="/opt/comfyui/custom_nodes/ComfyUI-Manager/__init__.py"
+
+if [ ! -e "$INIT_FILE" ]; then
+    echo "from .comfyui_manager import *" > "$INIT_FILE"
+fi
 
 # The custom nodes that were installed using the ComfyUI Manager may have requirements of their own, which are not installed when the container is
 # started for the first time; this loops over all custom nodes and installs the requirements of each custom node
