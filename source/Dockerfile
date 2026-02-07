@@ -17,7 +17,10 @@ RUN apt-get update --assume-yes && \
         git \
         sudo \
         libgl1-mesa-glx \
-        libglib2.0-0 && \
+        libglib2.0-0 \
+        build-essential \
+        ninja-build \
+        clang && \
     rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
 
 # Clones the ComfyUI repository and checks out the latest release
